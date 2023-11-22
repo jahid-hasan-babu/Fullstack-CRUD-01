@@ -7,7 +7,7 @@ exports.CreateProduct = async(req, res)=>{
         const result = await ProductModels.create(reqBody)
         res.status(200).json({status:"success",data:result});
     } catch (error) {
-        res.status(400).json({status:"fail",data:error.toString()})
+        res.status(200).json({status:"fail",data:error.toString()})
     }
 
 }
@@ -18,7 +18,7 @@ exports.ReadProduct = async(req, res)=>{
         const result = await ProductModels.find()
         res.status(200).json({status:"success",data:result});
     } catch (error) {
-        res.status(400).json({status:"fail",data:error.toString()})
+        res.status(200).json({status:"fail",data:error.toString()})
     }
 
 }
@@ -26,30 +26,30 @@ exports.ReadProduct = async(req, res)=>{
 exports.ReadProductById = async (req, res)=>{
     try {
       let id = req.params.id;
-      const result = ProductModels.findOne({_id:id})
+      let result = await ProductModels.find({_id:id})
       res.status(200).json({status:"success",data:result});
     } catch (error) {
-        res.status(400).json({status:"fail",data:error.toString()})
+        res.status(200).json({status:"fail",data:error.toString()})
     }
 }
-
+//update product
 exports.UpdateProduct = async (req, res)=>{
     try {
         let id = req.params.id;
         let reqBody = req.body;
-        const result = ProductModels.updateOne({_id:id},reqBody);
+        const result = await ProductModels.updateOne({_id:id},reqBody);
         res.status(200).json({status:"success",data:result});
     } catch (error) {
-        res.status(400).json({status:"fail",data:error.toString()})
+        res.status(200).json({status:"fail",data:error.toString()})
     }
 }
 
 exports.DeleteProduct = async(req,res)=>{
     try {
-        let id = req.params.id;
-        const result = ProductModels.deleteOne({_id:id})
+        let id= req.params.id;
+        const result = await ProductModels.deleteOne({_id:id})
         res.status(200).json({status:"success",data:result});
     } catch (error) {
-        res.status(400).json({status:"fail",data:error.toString()})
+        res.status(200).json({status:"fail",data:error.toString()})
     }
 }

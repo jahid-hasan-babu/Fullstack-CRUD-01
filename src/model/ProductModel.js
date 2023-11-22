@@ -3,16 +3,19 @@ const mongoose = require('mongoose');
 
 const DataSchema = mongoose.Schema({
     ProductName:{
-        type:String
+        type:String,
+        required:true
     },
     ProductCode:{
-        type:String
+        type:String,
+        required:true
     },
     img:{
         type:String
     },
     unitPrice:{
-        type:String
+        type:String,
+        required:true
     },
     Qty:{
         type:String

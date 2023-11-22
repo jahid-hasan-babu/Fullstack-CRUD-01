@@ -1,15 +1,17 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ReadPage from "./pages/ReadPage";
+import CreatePage from "./pages/CreatePage";
 
 const App = () => {
   return (
-    <div>
-      <h1>Jahid</h1>
-      <h1>Jahid</h1>
-      <h1>Jahid</h1>
-      <h1>Jahid</h1>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ReadPage />} />
+        <Route path="/create" element={<CreatePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
-
+export default App;
